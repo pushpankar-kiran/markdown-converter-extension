@@ -4,6 +4,18 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.3] - 2026-08-30
+
+### Security
+- The viewer now **sanitizes rendered Markdown with DOMPurify** before display,
+  stripping scripts, inline event handlers, `javascript:` URLs, and embedding
+  tags — protection independent of the CSP.
+- **Tightened the extension-page CSP**: `object-src 'none'`, `frame-src 'none'`,
+  `base-uri 'none'`, `form-action 'none'` (was `object-src 'self'` only).
+- **Removed the always-on content script.** Page conversion now injects its
+  script **on demand** (only when you trigger it), rather than running on every
+  page you visit.
+
 ## [1.0.2] - 2026-08-29
 
 ### Changed
@@ -34,6 +46,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - **Right-click context menus** for links and pages.
 - Built-in **rendered Markdown viewer** in a new tab, with a Raw toggle.
 
+[1.0.3]: https://github.com/pushpankar-kiran/markdown-converter-extension/releases/tag/v1.0.3
 [1.0.2]: https://github.com/pushpankar-kiran/markdown-converter-extension/releases/tag/v1.0.2
 [1.0.1]: https://github.com/pushpankar-kiran/markdown-converter-extension/releases/tag/v1.0.1
 [1.0.0]: https://github.com/pushpankar-kiran/markdown-converter-extension/releases/tag/v1.0.0

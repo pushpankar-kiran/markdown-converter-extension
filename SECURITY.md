@@ -36,10 +36,25 @@ patched version periodically; a PR bumping to a fixed release is welcome.
 
 ### Rendered Markdown (viewer)
 
-The viewer renders converted Markdown to HTML with `marked`. Inline scripts or
-event-handler attributes that might appear in converted content **cannot
-execute**, because the extension page's Content Security Policy is
-`script-src 'self'`. The content is also your own converted file.
+The viewer renders converted Markdown to HTML with `marked`. Because converted
+files can be untrusted, the generated HTML is **sanitized with DOMPurify** before
+it is inserted into the page — `<script>`, inline event handlers, `javascript:`
+URLs, and embedding tags (`iframe`, `object`, `embed`, `form`, `base`, `meta`)
+are stripped. This does not depend on the CSP.
+
+As defense in depth, the extension-page **Content Security Policy** is
+`script-src 'self' 'wasm-unsafe-eval'; object-src 'none'; frame-src 'none';
+base-uri 'none'; form-action 'none'` — so even if sanitization were bypassed, no
+inline script could run and no frame/object/form could be injected.
+
+### Least-privilege injection
+
+The extension does **not** run a content script on every page. Page-to-Markdown
+conversion injects its script **on demand** (via `chrome.scripting`) only when
+you explicitly trigger it — from the popup button or the right-click menu. The
+broad `host_permissions` that remain are used for two things only: injecting that
+on-demand script into the tab you're converting, and fetching a file when you use
+the "Convert this link" context menu.
 
 ## Supported versions
 

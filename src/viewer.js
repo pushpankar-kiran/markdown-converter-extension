@@ -4,8 +4,21 @@
 // transient — it clears when the browser closes, so we don't accumulate the
 // user's document text on disk.
 import { marked } from "marked";
+import DOMPurify from "dompurify";
 
 marked.setOptions({ gfm: true, breaks: false });
+
+// Converted files can be untrusted, so the HTML `marked` produces is sanitized
+// before it ever touches innerHTML. This strips <script>, inline event handlers,
+// javascript: URLs, and embedding tags — defense that does not depend on the CSP.
+function renderMarkdown(md) {
+  const rawHtml = marked.parse(md);
+  return DOMPurify.sanitize(rawHtml, {
+    FORBID_TAGS: ["style", "iframe", "object", "embed", "form", "base", "meta"],
+    FORBID_ATTR: ["style"],
+    ADD_ATTR: ["target"]
+  });
+}
 
 const els = {
   fileName: document.getElementById("fileName"),
@@ -51,10 +64,9 @@ async function init() {
   document.title = base + " — Markdown Preview";
   els.metaLine.textContent = formatMeta(currentMarkdown);
 
-  // marked returns an HTML string. Inline <script>/handler attributes it may
-  // contain won't execute: the extension-page CSP is script-src 'self', which
-  // blocks inline script. The content is also the user's own converted file.
-  els.rendered.innerHTML = marked.parse(currentMarkdown);
+  // Sanitized before assignment — see renderMarkdown(). The extension-page CSP
+  // (no frame-src/object-src, script-src 'self') is a second layer on top.
+  els.rendered.innerHTML = renderMarkdown(currentMarkdown);
   els.raw.textContent = currentMarkdown;
 
   wireControls();
