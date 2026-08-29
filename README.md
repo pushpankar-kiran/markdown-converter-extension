@@ -32,8 +32,8 @@ Each conversion also runs automatic **quality checks** (word-count ratio vs. sou
 Requires [Node.js](https://nodejs.org) 18+.
 
 ```bash
-git clone https://github.com/OWNER/REPO.git
-cd REPO
+git clone https://github.com/pushpankar-kiran/markdown-converter-extension.git
+cd markdown-converter-extension
 npm install
 npm run build
 ```
