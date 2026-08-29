@@ -1,15 +1,15 @@
 {
   "name": "md-converter-extension",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "Convert PDF, Word, Excel, PowerPoint, images (OCR), and web pages to Markdown entirely in the browser.",
   "type": "module",
+  "license": "MIT",
   "scripts": {
     "build": "node build.mjs",
     "watch": "node build.mjs --watch"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
   "dependencies": {
     "@firecrawl/pdf-inspector-wasm": "^1.17.0",
     "@mozilla/readability": "^0.6.0",
