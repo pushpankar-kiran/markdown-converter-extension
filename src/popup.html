@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Markdown Converter</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="mark">↓md</div>
+    <div class="title">
+      <h1>Markdown Converter</h1>
+      <p>Files in. Lightweight text out. Nothing leaves your browser.</p>
+    </div>
+  </header>
+
+  <main>
+    <section id="dropzone" class="dropzone" tabindex="0">
+      <input type="file" id="fileInput" multiple hidden
+             accept=".pdf,.docx,.xlsx,.xls,.csv,.pptx,.png,.jpg,.jpeg,.webp,.bmp,.gif" />
+      <div class="dropzone-inner">
+        <div class="dropzone-icon">＋</div>
+        <p class="dropzone-text">Drop files here, or <button id="browseBtn" class="link-btn">choose files</button></p>
+        <p class="dropzone-hint">PDF · DOCX · XLSX/CSV · PPTX · PNG/JPG</p>
+      </div>
+    </section>
+
+    <section id="pageActions" class="page-actions">
+      <button id="convertPageBtn" class="secondary-btn">Convert this page to Markdown</button>
+    </section>
+
+    <section id="results" class="results" hidden>
+      <div class="results-header">
+        <span id="resultsCount"></span>
+        <button id="downloadAllBtn" class="link-btn" hidden>Download all (.zip)</button>
+      </div>
+      <ul id="resultsList" class="results-list"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <span id="statusLine">Ready.</span>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

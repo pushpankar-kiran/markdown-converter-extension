@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Markdown Preview</title>
+  <link rel="stylesheet" href="viewer.css" />
+</head>
+<body>
+  <header class="viewer-topbar">
+    <div class="viewer-mark">↓md</div>
+    <div class="viewer-title">
+      <span id="fileName" class="file-name">Markdown Preview</span>
+      <span id="metaLine" class="meta-line"></span>
+    </div>
+    <div class="viewer-actions">
+      <div class="toggle" role="tablist" aria-label="View mode">
+        <button id="tabRendered" class="toggle-btn is-active" role="tab">Rendered</button>
+        <button id="tabRaw" class="toggle-btn" role="tab">Raw</button>
+      </div>
+      <button id="copyBtn" class="action-btn">Copy</button>
+      <button id="downloadBtn" class="action-btn">Download .md</button>
+    </div>
+  </header>
+
+  <main class="viewer-main">
+    <article id="rendered" class="markdown-body"></article>
+    <pre id="raw" class="raw-view" hidden></pre>
+    <p id="emptyState" class="empty-state" hidden></p>
+  </main>
+
+  <script src="viewer.js"></script>
+</body>
+</html>
