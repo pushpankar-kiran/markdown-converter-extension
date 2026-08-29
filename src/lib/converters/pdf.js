@@ -6,7 +6,10 @@ let initialized = false;
 async function ensureInit() {
   if (initialized) return;
   const wasmUrl = chrome.runtime.getURL("wasm/pdf_inspector_wasm_bg.wasm");
-  await init(wasmUrl);
+  // Newer wasm-bindgen deprecates passing the path directly; it wants a single
+  // options object (`{ module_or_path }`). Passing the bare URL still works but
+  // logs a deprecation warning.
+  await init({ module_or_path: wasmUrl });
   initialized = true;
 }
 
