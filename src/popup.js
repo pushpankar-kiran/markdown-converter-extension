@@ -21,6 +21,10 @@ const els = {
 // zip filenames can see the whole set.
 const results = [];
 
+// True while a conversion (files or page) is running. New uploads are refused
+// until it finishes, so results can't interleave or race.
+let isProcessing = false;
+
 // ---- File picker + drag & drop --------------------------------------------
 
 els.browseBtn.addEventListener("click", (e) => {
@@ -67,7 +71,8 @@ els.dropzone.addEventListener("drop", (e) => {
 // ---- Convert this page ----------------------------------------------------
 
 els.convertPageBtn.addEventListener("click", async () => {
-  els.convertPageBtn.disabled = true;
+  if (isProcessing) return refuseWhileBusy();
+  beginProcessing();
   setStatus("Reading the current page…");
   try {
     const [tab] = await chrome.tabs.query({
@@ -99,28 +104,34 @@ els.convertPageBtn.addEventListener("click", async () => {
     );
     console.error("[md-converter] page conversion:", e);
   } finally {
-    els.convertPageBtn.disabled = false;
+    endProcessing();
   }
 });
 
 // ---- Core: run each file through the converter ----------------------------
 
 async function handleFiles(files) {
+  if (isProcessing) return refuseWhileBusy();
+  beginProcessing();
   els.results.hidden = false;
-  for (const file of files) {
-    const row = renderPending(file.name);
-    setStatus(`Converting ${file.name}…`);
-    try {
-      const result = await convertFile(file);
-      finalizeRow(row, result);
-      if (result.markdown) results.push(result);
-    } catch (e) {
-      failRow(row, file.name, e);
-      console.error("[md-converter] conversion failed:", e);
+  try {
+    for (const file of files) {
+      const row = renderPending(file.name);
+      setStatus(`Converting ${file.name}…`);
+      try {
+        const result = await convertFile(file);
+        finalizeRow(row, result);
+        if (result.markdown) results.push(result);
+      } catch (e) {
+        failRow(row, file.name, e);
+        console.error("[md-converter] conversion failed:", e);
+      }
     }
+    updateResultsHeader();
+    setStatus("Done.");
+  } finally {
+    endProcessing();
   }
-  updateResultsHeader();
-  setStatus("Done.");
 }
 
 // ---- Rendering ------------------------------------------------------------
@@ -175,6 +186,7 @@ function finalizeRow(li, result) {
   const actions = document.createElement("div");
   actions.className = "result-actions";
   const viewBtn = document.createElement("button");
+  viewBtn.className = "primary";
   viewBtn.textContent = "View";
   viewBtn.addEventListener("click", () =>
     openViewer(result.markdown, mdName(result.sourceName), viewBtn)
@@ -358,6 +370,31 @@ function escapeHtml(s) {
   }[c]));
 }
 
-function setStatus(text) {
+function setStatus(text, level) {
   els.statusLine.textContent = text;
+  els.statusLine.classList.toggle("status-error", level === "error");
+}
+
+// ---- Busy / refusal state -------------------------------------------------
+
+function beginProcessing() {
+  isProcessing = true;
+  els.dropzone.classList.add("busy");
+  els.convertPageBtn.disabled = true;
+}
+
+function endProcessing() {
+  isProcessing = false;
+  els.dropzone.classList.remove("busy");
+  els.convertPageBtn.disabled = false;
+}
+
+// Called when the user tries to add files (or convert a page) mid-conversion.
+function refuseWhileBusy() {
+  setStatus("Please wait — a conversion is already in progress.", "error");
+  // Restart the shake animation even on repeated attempts.
+  els.dropzone.classList.remove("error");
+  void els.dropzone.offsetWidth;
+  els.dropzone.classList.add("error");
+  setTimeout(() => els.dropzone.classList.remove("error"), 400);
 }

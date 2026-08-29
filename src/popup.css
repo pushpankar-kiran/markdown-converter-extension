@@ -72,6 +72,17 @@ main { padding: 14px 18px 6px; }
   background: var(--signal-soft);
   outline: none;
 }
+.dropzone.busy { opacity: 0.6; cursor: progress; }
+.dropzone.error {
+  border-color: var(--danger);
+  background: var(--danger-soft);
+  animation: shake 320ms ease;
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
 .dropzone-icon {
   font-size: 20px;
   color: var(--ink-soft);
@@ -158,18 +169,27 @@ main { padding: 14px 18px 6px; }
 .flag.warning { background: var(--warn-soft); color: #7a4a15; }
 .flag.info { background: var(--paper); color: var(--ink-soft); border: 1px solid var(--line); }
 
-.result-actions { display: flex; gap: 10px; margin-top: 7px; }
+.result-actions { display: flex; gap: 6px; margin-top: 9px; }
 .result-actions button {
-  font-family: var(--mono);
-  font-size: 10.5px;
-  background: none;
-  border: none;
-  color: var(--signal);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 11px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
   cursor: pointer;
-  padding: 0;
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  transition: border-color 120ms ease, background 120ms ease, color 120ms ease;
 }
+.result-actions button:hover { border-color: var(--signal); color: var(--signal); }
+.result-actions button:active { transform: translateY(0.5px); }
+.result-actions button.primary {
+  background: var(--signal);
+  border-color: var(--signal);
+  color: var(--paper);
+}
+.result-actions button.primary:hover { background: #285f54; color: var(--paper); }
 
 footer {
   padding: 8px 18px 12px;
@@ -179,3 +199,4 @@ footer {
   border-top: 1px solid var(--line);
   margin-top: 10px;
 }
+#statusLine.status-error { color: var(--danger); font-weight: 700; }
