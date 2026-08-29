@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 480" font-family="Segoe UI, system-ui, -apple-system, sans-serif">
+  <rect x="0" y="0" width="860" height="480" rx="20" fill="#f1f0ea"/>
+
+  <!-- left: pitch -->
+  <g transform="translate(48,64)">
+    <g>
+      <rect x="0" y="0" width="52" height="34" rx="6" fill="#1c211f"/>
+      <text x="26" y="23" text-anchor="middle" fill="#faf9f5" font-size="16" font-weight="700" font-family="Consolas, monospace">↓md</text>
+    </g>
+    <text x="0" y="86" fill="#1c211f" font-size="36" font-weight="800">Markdown</text>
+    <text x="0" y="128" fill="#1c211f" font-size="36" font-weight="800">Converter</text>
+    <text x="0" y="170" fill="#565f5b" font-size="16">Files in. Lightweight text out.</text>
+    <text x="0" y="194" fill="#565f5b" font-size="16">Nothing leaves your browser.</text>
+
+    <g font-size="14" fill="#1c211f">
+      <circle cx="7" cy="232" r="4" fill="#2f6f62"/><text x="22" y="237">PDF · DOCX · XLSX · PPTX · images · web pages</text>
+      <circle cx="7" cy="262" r="4" fill="#2f6f62"/><text x="22" y="267">100% client-side — no uploads, no servers</text>
+      <circle cx="7" cy="292" r="4" fill="#2f6f62"/><text x="22" y="297">Automatic quality checks on every file</text>
+      <circle cx="7" cy="322" r="4" fill="#2f6f62"/><text x="22" y="327">Built-in rendered Markdown viewer</text>
+    </g>
+
+    <rect x="0" y="352" width="180" height="20" rx="4" fill="none"/>
+    <text x="0" y="366" fill="#565f5b" font-size="12" font-family="Consolas, monospace">Manifest V3 · MIT licensed</text>
+  </g>
+
+  <!-- right: popup mockup -->
+  <g transform="translate(500,40)">
+    <rect x="0" y="0" width="320" height="400" rx="14" fill="#faf9f5" stroke="#dcdad2" stroke-width="1.5"/>
+
+    <!-- topbar -->
+    <g transform="translate(16,14)">
+      <rect x="0" y="0" width="34" height="24" rx="4" fill="#1c211f"/>
+      <text x="17" y="16" text-anchor="middle" fill="#faf9f5" font-size="11" font-weight="700" font-family="Consolas, monospace">↓md</text>
+      <text x="44" y="11" fill="#1c211f" font-size="12.5" font-weight="700">Markdown Converter</text>
+      <text x="44" y="27" fill="#565f5b" font-size="9.5">Files in. Lightweight text out.</text>
+    </g>
+    <line x1="0" y1="52" x2="320" y2="52" stroke="#dcdad2"/>
+
+    <!-- dropzone -->
+    <g transform="translate(16,64)">
+      <rect x="0" y="0" width="288" height="66" rx="9" fill="#f1f0ea" stroke="#dcdad2" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <text x="144" y="26" text-anchor="middle" fill="#565f5b" font-size="15">＋</text>
+      <text x="144" y="42" text-anchor="middle" fill="#1c211f" font-size="11">Drop files here, or <tspan fill="#2f6f62" font-weight="600" text-decoration="underline">choose files</tspan></text>
+      <text x="144" y="57" text-anchor="middle" fill="#565f5b" font-size="8.5" font-family="Consolas, monospace">PDF · DOCX · XLSX/CSV · PPTX · PNG/JPG</text>
+    </g>
+
+    <!-- results -->
+    <g transform="translate(16,142)">
+      <text x="0" y="8" fill="#565f5b" font-size="9" font-family="Consolas, monospace">2 files</text>
+      <text x="288" y="8" text-anchor="end" fill="#2f6f62" font-size="9" font-family="Consolas, monospace" text-decoration="underline">Download all (.zip)</text>
+
+      <!-- item 1 -->
+      <g transform="translate(0,16)">
+        <rect x="0" y="0" width="288" height="92" rx="8" fill="#f1f0ea" stroke="#dcdad2"/>
+        <circle cx="14" cy="18" r="4.5" fill="#2f6f62"/>
+        <text x="26" y="22" fill="#1c211f" font-size="11.5" font-weight="600">quarterly-report.pdf</text>
+        <text x="14" y="40" fill="#565f5b" font-size="9.5" font-family="Consolas, monospace">2.4 MB → <tspan fill="#2f6f62" font-weight="700">18.7 KB</tspan> · 99% smaller · 240 ms</text>
+        <rect x="14" y="48" width="260" height="20" rx="5" fill="#faf9f5" stroke="#dcdad2"/>
+        <text x="22" y="61" fill="#565f5b" font-size="8.5">Only the main content was extracted — nav/ads excluded.</text>
+        <text x="14" y="84" fill="#2f6f62" font-size="9" font-family="Consolas, monospace" text-decoration="underline">View</text>
+        <text x="52" y="84" fill="#2f6f62" font-size="9" font-family="Consolas, monospace" text-decoration="underline">Copy</text>
+        <text x="90" y="84" fill="#2f6f62" font-size="9" font-family="Consolas, monospace" text-decoration="underline">Download .md</text>
+      </g>
+
+      <!-- item 2 -->
+      <g transform="translate(0,116)">
+        <rect x="0" y="0" width="288" height="70" rx="8" fill="#f1f0ea" stroke="#dcdad2"/>
+        <circle cx="14" cy="18" r="4.5" fill="#a8631f"/>
+        <text x="26" y="22" fill="#1c211f" font-size="11.5" font-weight="600">budget.xlsx</text>
+        <text x="14" y="40" fill="#565f5b" font-size="9.5" font-family="Consolas, monospace">88 KB → <tspan fill="#2f6f62" font-weight="700">6.1 KB</tspan> · 93% smaller · 60 ms</text>
+        <text x="14" y="62" fill="#2f6f62" font-size="9" font-family="Consolas, monospace" text-decoration="underline">View</text>
+        <text x="52" y="62" fill="#2f6f62" font-size="9" font-family="Consolas, monospace" text-decoration="underline">Copy</text>
+        <text x="90" y="62" fill="#2f6f62" font-size="9" font-family="Consolas, monospace" text-decoration="underline">Download .md</text>
+      </g>
+    </g>
+  </g>
+</svg>

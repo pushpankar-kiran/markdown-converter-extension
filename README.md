@@ -1,8 +1,24 @@
-# Markdown Converter — Chrome Extension
+<h1 align="center">Markdown Converter — Chrome Extension</h1>
 
-Convert **PDF, Word (.docx), Excel (.xlsx/.csv), PowerPoint (.pptx), images (OCR), and web pages** into clean, compact **Markdown** — entirely in your browser. Nothing is uploaded to any server; every conversion runs locally.
+<p align="center">
+  Convert <b>PDF, Word, Excel, PowerPoint, images (OCR), and web pages</b> into clean, compact <b>Markdown</b> — entirely in your browser. Nothing is uploaded; every conversion runs locally.
+</p>
 
-Each conversion also runs automatic **quality checks** (word-count ratio vs. source, table-count, truncation, plus the PDF engine's own confidence/OCR/encoding signals) and shows a badge so you know when output is worth a second look.
+<p align="center">
+  <a href="https://github.com/pushpankar-kiran/markdown-converter-extension/releases/latest"><img alt="Release" src="https://img.shields.io/github/v/release/pushpankar-kiran/markdown-converter-extension?color=2f6f62"></a>
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-2f6f62.svg"></a>
+  <img alt="Manifest V3" src="https://img.shields.io/badge/Manifest-V3-1c211f.svg">
+  <img alt="100% client-side" src="https://img.shields.io/badge/100%25-client--side-2f6f62.svg">
+  <a href="../../actions/workflows/build.yml"><img alt="Build" src="https://github.com/pushpankar-kiran/markdown-converter-extension/actions/workflows/build.yml/badge.svg"></a>
+</p>
+
+<p align="center">
+  <img src="docs/hero.svg" alt="Markdown Converter — files in, lightweight Markdown out" width="820">
+</p>
+
+Each conversion also runs automatic **quality checks** (word-count ratio vs. source, table count, truncation, plus the PDF engine's own confidence/OCR/encoding signals) and shows a badge so you know when output is worth a second look.
+
+> **New here?** Jump to [Install in 3 steps](#option-a--load-the-built-extension-no-tools-needed) — no tools required.
 
 ## Features
 
@@ -94,6 +110,16 @@ npm run watch      # rebuild on change
 
 Entry points (`src/popup.js`, `src/background.js`, `src/content-script.js`, `src/viewer.js`) are bundled by `esbuild` into single self-contained files, and the WASM/OCR assets are copied into `dist/` — see `build.mjs`.
 
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the full setup and PR guidelines.
+
+## Contributing
+
+Contributions are welcome — bug reports, feature ideas, docs, and code. Start with [CONTRIBUTING.md](CONTRIBUTING.md), and please follow the [Code of Conduct](CODE_OF_CONDUCT.md). Found a security issue? See [SECURITY.md](SECURITY.md).
+
+## Support the project
+
+If this saved you some time, please **⭐ star the repo** — it helps other people find it. Bug reports and PRs are just as appreciated.
+
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE) © Pushpankar Kiran
