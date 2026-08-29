@@ -21,11 +21,21 @@ Each conversion also runs automatic **quality checks** (word-count ratio vs. sou
 
 ### Option A — Load the built extension (no tools needed)
 
-1. Download the latest `md-converter-dist.zip` from the [Releases](../../releases) page and unzip it, **or** build it yourself (Option B).
-2. Open `chrome://extensions` in Chrome (or any Chromium browser — Edge, Brave, etc.).
-3. Turn on **Developer mode** (top-right).
-4. Click **Load unpacked** and select the unzipped **`dist`** folder.
-5. Pin the ↓ icon from the puzzle-piece menu.
+Nothing to install — download, unzip, and load. Works in Chrome, Edge, Brave, or any Chromium browser.
+
+**Step 1 — Download & unzip.** Grab the latest `md-converter-dist.zip` from the [Releases](../../releases) page and unzip it. You'll get a folder named `dist`.
+
+![Step 1: unzip the download](docs/install-1-unzip.svg)
+
+**Step 2 — Open `chrome://extensions` and turn on Developer mode** (toggle, top-right).
+
+![Step 2: turn on Developer mode](docs/install-2-developer-mode.svg)
+
+**Step 3 — Click "Load unpacked" and select the `dist` folder.**
+
+![Step 3: Load unpacked and pick the dist folder](docs/install-3-load-unpacked.svg)
+
+That's it — the ↓ icon appears in your toolbar. Pin it from the puzzle-piece menu for quick access.
 
 ### Option B — Build from source
 
